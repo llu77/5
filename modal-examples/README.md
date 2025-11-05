@@ -4,28 +4,49 @@ Serverless Python functions combining Modal's compute platform with Claude AI pa
 
 ## 📁 What's Here
 
+### Examples
 - **`thinking_agent_modal.py`** - Extended thinking with Modal serverless functions
 - **`orchestrator_workers_modal.py`** - Distributed workers with automatic scaling
 - **`code_analyzer_modal.py`** - Code analysis and security auditing
 - **`resilient_batch_processor.py`** - Fault-tolerant batch processing
+
+### Documentation & Tools
+- **`QUICKSTART_SUMMARY.md`** - ⚡ **START HERE!** Your credentials and 3-command setup
+- **`SETUP.md`** - Detailed setup guide with troubleshooting
+- **`quickstart.sh`** - Automated setup script
+- **`test_webhook.py`** - Webhook testing tool
 - **`requirements.txt`** - Python dependencies
 
-## 🚀 Quick Start
+## ⚡ Ultra-Quick Start (Automated)
 
 ```bash
-# Install Modal CLI
+# One-command setup (includes deployment)
+./quickstart.sh
+
+# Or just 3 commands:
+pip install modal
+modal token set --token-id ak-CNC6lcJihRz4vhP3WnR2YE --token-secret as-BRa4kKXSby7B8NhgFBFfak
+modal deploy thinking_agent_modal.py
+```
+
+**Read `QUICKSTART_SUMMARY.md` for your credentials and detailed instructions.**
+
+## 🚀 Manual Setup
+
+```bash
+# 1. Install Modal CLI
 pip install modal
 
-# Set up Modal account
-modal setup
+# 2. Authenticate (use your credentials from QUICKSTART_SUMMARY.md)
+modal token set --token-id ak-CNC6lcJihRz4vhP3WnR2YE --token-secret as-BRa4kKXSby7B8NhgFBFfak
 
-# Create Anthropic secret
+# 3. Create Anthropic secret
 modal secret create anthropic-secret ANTHROPIC_API_KEY=sk-ant-...
 
-# Run an example
+# 4. Test locally
 modal run thinking_agent_modal.py
 
-# Deploy as web endpoint
+# 5. Deploy to cloud
 modal deploy thinking_agent_modal.py
 ```
 
