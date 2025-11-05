@@ -1,11 +1,13 @@
 # MCP (Model Context Protocol) Integration Examples
 
-Use Claude with MCP servers for enhanced capabilities like filesystem access, database queries, git operations, and more.
+Use Claude with MCP servers for enhanced capabilities like filesystem access, database queries, git operations, Cloudflare analytics, and data lake queries.
 
 ## 📁 What's Here
 
-- **`claude_with_mcp.py`** - MCP integration examples
-- **`mcp_config.json`** - MCP server configuration
+- **`claude_with_mcp.py`** - Basic MCP integration examples
+- **`advanced_mcp_examples.py`** - Cloudflare & Iceberg integration
+- **`mcp_config.json`** - Complete MCP server configuration
+- **`ADVANCED_MCP_SETUP.md`** - Setup guide for advanced servers
 - **`requirements.txt`** - Python dependencies
 
 ## 🚀 Quick Start
@@ -25,7 +27,9 @@ python claude_with_mcp.py
 
 ## 🔌 Available MCP Servers
 
-### Filesystem
+### Basic Servers
+
+**Filesystem**
 Access local files and directories.
 
 ```json
@@ -84,6 +88,55 @@ PostgreSQL database access.
   }
 }
 ```
+
+### Advanced Servers
+
+**Cloudflare Observability**
+Access Cloudflare analytics and monitoring data.
+
+```json
+{
+  "cloudflare-observability": {
+    "command": "npx",
+    "args": ["mcp-remote", "https://observability.mcp.cloudflare.com/mcp"],
+    "env": {}
+  }
+}
+```
+
+**Cloudflare Bindings**
+Interact with Cloudflare Workers bindings (KV, D1, R2).
+
+```json
+{
+  "cloudflare-bindings": {
+    "command": "npx",
+    "args": ["mcp-remote", "https://bindings.mcp.cloudflare.com/mcp"],
+    "env": {}
+  }
+}
+```
+
+**Apache Iceberg Data Lake**
+Query Iceberg tables via Impala for data analytics.
+
+```json
+{
+  "iceberg": {
+    "command": "uvx",
+    "args": ["git+https://github.com/cloudera/iceberg-mcp-server@main"],
+    "env": {
+      "IMPALA_HOST": "your-impala-host",
+      "IMPALA_PORT": "21050",
+      "IMPALA_USER": "username",
+      "IMPALA_PASSWORD": "password",
+      "IMPALA_DATABASE": "default"
+    }
+  }
+}
+```
+
+See `ADVANCED_MCP_SETUP.md` for detailed setup instructions.
 
 ## 💻 Usage Examples
 

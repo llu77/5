@@ -40,6 +40,28 @@
         "SLACK_BOT_TOKEN": "xoxb-your-token",
         "SLACK_TEAM_ID": "T1234567890"
       }
+    },
+    "cloudflare-observability": {
+      "command": "npx",
+      "args": ["mcp-remote", "https://observability.mcp.cloudflare.com/mcp"],
+      "env": {}
+    },
+    "cloudflare-bindings": {
+      "command": "npx",
+      "args": ["mcp-remote", "https://bindings.mcp.cloudflare.com/mcp"],
+      "env": {}
+    },
+    "iceberg": {
+      "command": "uvx",
+      "args": ["git+https://github.com/cloudera/iceberg-mcp-server@main"],
+      "env": {
+        "IMPALA_HOST": "your-impala-host",
+        "IMPALA_PORT": "21050",
+        "IMPALA_USER": "your-username",
+        "IMPALA_PASSWORD": "your-password",
+        "IMPALA_DATABASE": "your-database",
+        "MCP_TRANSPORT": "stdio"
+      }
     }
   }
 }
