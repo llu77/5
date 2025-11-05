@@ -1,0 +1,28 @@
+{
+  "plugins": {
+    "agent-sdk-dev": {
+      "enabled": true
+    },
+    "code-review": {
+      "enabled": true
+    },
+    "commit-commands": {
+      "enabled": true
+    },
+    "feature-dev": {
+      "enabled": true
+    },
+    "explanatory-output-style": {
+      "enabled": true
+    },
+    "learning-output-style": {
+      "enabled": true
+    },
+    "pr-review-toolkit": {
+      "enabled": true
+    },
+    "security-guidance": {
+      "enabled": true
+    }
+  }
+}
