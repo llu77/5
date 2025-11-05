@@ -1,12 +1,13 @@
 # MCP (Model Context Protocol) Integration Examples
 
-Use Claude with MCP servers for enhanced capabilities like filesystem access, database queries, git operations, Cloudflare analytics, and data lake queries.
+Use Claude with MCP servers for enhanced capabilities like filesystem access, database queries, git operations, code quality analysis, impact assessment, Cloudflare analytics, and data lake queries.
 
 ## 📁 What's Here
 
 - **`claude_with_mcp.py`** - Basic MCP integration examples
 - **`advanced_mcp_examples.py`** - Cloudflare & Iceberg integration
-- **`mcp_config.json`** - Complete MCP server configuration
+- **`code_quality_mcp_examples.py`** - Codacy & CodeLogic integration
+- **`mcp_config.json`** - Complete MCP server configuration (11 servers)
 - **`ADVANCED_MCP_SETUP.md`** - Setup guide for advanced servers
 - **`requirements.txt`** - Python dependencies
 
@@ -84,6 +85,40 @@ PostgreSQL database access.
     "args": ["@modelcontextprotocol/server-postgres"],
     "env": {
       "DATABASE_URL": "postgresql://user:pass@localhost:5432/db"
+    }
+  }
+}
+```
+
+### Code Quality Servers
+
+**Codacy**
+Code quality, security, and coverage analysis.
+
+```json
+{
+  "codacy": {
+    "command": "npx",
+    "args": ["-y", "@codacy/mcp-server"],
+    "env": {
+      "CODACY_ACCOUNT_TOKEN": "your-codacy-api-token"
+    }
+  }
+}
+```
+
+**CodeLogic**
+Software dependency and impact analysis.
+
+```json
+{
+  "codelogic": {
+    "command": "uvx",
+    "args": ["codelogic-mcp-server"],
+    "env": {
+      "CODELOGIC_SERVER_URL": "https://your-codelogic-server.com",
+      "CODELOGIC_API_TOKEN": "your-api-token",
+      "CODELOGIC_WORKSPACE": "your-workspace-name"
     }
   }
 }
@@ -212,7 +247,50 @@ result = client.chat(
 )
 ```
 
+### Example 5: Code Quality Analysis
+
+```python
+from code_quality_mcp_examples import CodeQualityMCPClient
+
+client = CodeQualityMCPClient()
+
+# Configure Codacy
+client.configure_codacy()
+
+# Analyze code quality
+result = client.chat(
+    message="Scan for security vulnerabilities and quality issues",
+    system="You have Codacy access. Provide comprehensive analysis.",
+    enable_thinking=True
+)
+```
+
+### Example 6: Impact Analysis
+
+```python
+# Configure CodeLogic
+client.configure_codelogic(
+    server_url="https://codelogic.company.com",
+    api_token="your-token",
+    workspace="main"
+)
+
+# Analyze refactoring impact
+result = client.chat(
+    message="Show impact of changing the UserService.authenticate method",
+    system="You have CodeLogic access. Analyze dependencies."
+)
+```
+
 ## 🎯 Use Cases
+
+### Code Quality & Security
+- Automated quality analysis (Codacy)
+- Security vulnerability scanning (Codacy)
+- Test coverage tracking (Codacy)
+- Impact analysis for refactoring (CodeLogic)
+- Dependency mapping (CodeLogic)
+- Safe refactoring assessment
 
 ### Code Analysis
 - Security audits

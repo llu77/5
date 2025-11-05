@@ -62,6 +62,22 @@
         "IMPALA_DATABASE": "your-database",
         "MCP_TRANSPORT": "stdio"
       }
+    },
+    "codacy": {
+      "command": "npx",
+      "args": ["-y", "@codacy/mcp-server"],
+      "env": {
+        "CODACY_ACCOUNT_TOKEN": "your-codacy-api-token"
+      }
+    },
+    "codelogic": {
+      "command": "uvx",
+      "args": ["codelogic-mcp-server"],
+      "env": {
+        "CODELOGIC_SERVER_URL": "https://your-codelogic-server.com",
+        "CODELOGIC_API_TOKEN": "your-api-token",
+        "CODELOGIC_WORKSPACE": "your-workspace-name"
+      }
     }
   }
 }
