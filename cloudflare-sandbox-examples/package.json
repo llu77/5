@@ -1,0 +1,20 @@
+{
+  "name": "cloudflare-sandbox-examples",
+  "version": "1.0.0",
+  "description": "Integration examples for Cloudflare Sandbox SDK with Claude patterns",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.0",
+    "@cloudflare/sandbox": "^0.5.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241127.0",
+    "typescript": "^5.7.2",
+    "wrangler": "^3.94.0"
+  }
+}

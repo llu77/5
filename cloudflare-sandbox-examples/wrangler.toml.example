@@ -1,0 +1,43 @@
+# Wrangler Configuration Example
+# Copy this to wrangler.toml and customize for your deployment
+
+name = "sandbox-integration"
+main = "thinking-agent-sandbox.ts"  # Change to your desired example
+compatibility_date = "2024-11-05"
+compatibility_flags = ["nodejs_compat"]
+
+# Durable Objects
+[[durable_objects.bindings]]
+name = "Sandbox"
+class_name = "Sandbox"
+script_name = "sandbox-integration"
+
+# Environment variables
+[vars]
+# Add non-sensitive variables here
+
+# Secrets (set with: wrangler secret put ANTHROPIC_API_KEY)
+# ANTHROPIC_API_KEY = "sk-ant-..."
+
+# For local development
+[env.dev]
+vars = { ENVIRONMENT = "development" }
+
+# For production
+[env.production]
+vars = { ENVIRONMENT = "production" }
+
+# Docker configuration for local sandbox
+# Ensure Docker is running for local development
+# The sandbox will automatically pull the container image
+
+# Example usage for each worker:
+#
+# 1. Thinking Agent:
+#    main = "thinking-agent-sandbox.ts"
+#
+# 2. Orchestrator-Workers:
+#    main = "orchestrator-workers-sandbox.ts"
+#
+# 3. Claude Code Automation:
+#    main = "claude-code-automation.ts"
