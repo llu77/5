@@ -1,0 +1,48 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "strapi-ai-worker",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-02-04",
+  "compatibility_flags": ["nodejs_compat"],
+
+  "vpc_services": [
+    {
+      "binding": "STRAPI_VPC",
+      "service_id": "ENTER_YOUR_VPC_SERVICE_ID",
+      "remote": true
+    }
+  ],
+
+  "vars": {
+    "STRAPI_URL": "http://internal-strapi.company.local:1337",
+    "ENVIRONMENT": "production"
+  },
+
+  "observability": {
+    "enabled": true
+  },
+
+  "[env.production]": {
+    "name": "strapi-ai-worker-production",
+    "vars": {
+      "STRAPI_URL": "http://your-private-strapi-instance:1337",
+      "ENVIRONMENT": "production"
+    }
+  },
+
+  "[env.staging]": {
+    "name": "strapi-ai-worker-staging",
+    "vars": {
+      "STRAPI_URL": "http://your-staging-strapi-instance:1337",
+      "ENVIRONMENT": "staging"
+    }
+  },
+
+  "[env.development]": {
+    "name": "strapi-ai-worker-dev",
+    "vars": {
+      "STRAPI_URL": "http://localhost:1337",
+      "ENVIRONMENT": "development"
+    }
+  }
+}

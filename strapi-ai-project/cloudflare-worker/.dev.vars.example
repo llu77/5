@@ -1,0 +1,6 @@
+# Development secrets (copy to .dev.vars for local development)
+# DO NOT commit .dev.vars file!
+
+# Strapi API Token
+# Generate in Strapi: Settings → API Tokens → Create new API Token
+STRAPI_API_TOKEN=your-strapi-api-token-here
