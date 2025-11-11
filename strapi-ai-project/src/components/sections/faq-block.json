@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_sections_faq_blocks",
+  "info": {
+    "displayName": "FAQ Block",
+    "description": "Frequently Asked Questions section",
+    "icon": "question"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 100
+    },
+    "subtitle": {
+      "type": "text",
+      "required": false,
+      "maxLength": 300
+    },
+    "faqs": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.faq-item",
+      "required": true,
+      "min": 1
+    },
+    "displayStyle": {
+      "type": "enumeration",
+      "enum": ["accordion", "grid", "list"],
+      "default": "accordion"
+    },
+    "showSearch": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

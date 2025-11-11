@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_sections_faq_items",
+  "info": {
+    "displayName": "FAQ Item",
+    "description": "Single FAQ question and answer",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "question": {
+      "type": "string",
+      "required": true,
+      "maxLength": 200
+    },
+    "answer": {
+      "type": "richtext",
+      "required": true
+    },
+    "category": {
+      "type": "string",
+      "required": false,
+      "maxLength": 50
+    },
+    "order": {
+      "type": "integer",
+      "required": false,
+      "default": 0
+    }
+  }
+}

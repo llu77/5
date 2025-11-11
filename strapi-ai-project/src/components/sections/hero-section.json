@@ -1,0 +1,54 @@
+{
+  "collectionName": "components_sections_hero_sections",
+  "info": {
+    "displayName": "Hero Section",
+    "description": "Hero section with title, subtitle, image, and CTA buttons",
+    "icon": "star"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 100
+    },
+    "subtitle": {
+      "type": "text",
+      "required": false,
+      "maxLength": 300
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images", "videos"]
+    },
+    "ctaButtons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.button",
+      "required": false,
+      "max": 3
+    },
+    "alignment": {
+      "type": "enumeration",
+      "enum": ["left", "center", "right"],
+      "default": "center"
+    },
+    "height": {
+      "type": "enumeration",
+      "enum": ["small", "medium", "large", "fullscreen"],
+      "default": "large"
+    },
+    "overlay": {
+      "type": "boolean",
+      "default": true
+    },
+    "overlayOpacity": {
+      "type": "integer",
+      "min": 0,
+      "max": 100,
+      "default": 50
+    }
+  }
+}

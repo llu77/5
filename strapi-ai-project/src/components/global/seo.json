@@ -1,0 +1,42 @@
+{
+  "collectionName": "components_global_seo",
+  "info": {
+    "displayName": "SEO",
+    "description": "SEO metadata component for pages",
+    "icon": "search"
+  },
+  "options": {},
+  "attributes": {
+    "metaTitle": {
+      "type": "string",
+      "required": true,
+      "maxLength": 60,
+      "minLength": 10
+    },
+    "metaDescription": {
+      "type": "text",
+      "required": true,
+      "maxLength": 160,
+      "minLength": 50
+    },
+    "ogImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "canonicalURL": {
+      "type": "string",
+      "required": false
+    },
+    "keywords": {
+      "type": "string",
+      "required": false,
+      "maxLength": 255
+    },
+    "structuredData": {
+      "type": "json",
+      "required": false
+    }
+  }
+}

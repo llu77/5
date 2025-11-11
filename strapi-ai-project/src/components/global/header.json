@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_global_headers",
+  "info": {
+    "displayName": "Header",
+    "description": "Global header component with logo and navigation",
+    "icon": "layer"
+  },
+  "options": {},
+  "attributes": {
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "navigationLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.link",
+      "required": false,
+      "max": 10
+    },
+    "ctaButton": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.button",
+      "required": false
+    },
+    "showSearch": {
+      "type": "boolean",
+      "default": false
+    },
+    "sticky": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

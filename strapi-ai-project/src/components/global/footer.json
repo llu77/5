@@ -1,0 +1,46 @@
+{
+  "collectionName": "components_global_footers",
+  "info": {
+    "displayName": "Footer",
+    "description": "Global footer component with links and social media",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "copyrightText": {
+      "type": "string",
+      "required": true,
+      "maxLength": 200
+    },
+    "socialLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.link",
+      "required": false,
+      "max": 10
+    },
+    "sitemapLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.link",
+      "required": false,
+      "max": 20
+    },
+    "newsletterSignup": {
+      "type": "boolean",
+      "default": false
+    },
+    "companyAddress": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.address",
+      "required": false
+    }
+  }
+}
