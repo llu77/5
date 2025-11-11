@@ -17,7 +17,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => ({
       }
 
       const result = await strapi
-        .service('api::ai-assistant.ai-assistant')
+        .service('api::ai-assistant.ai-provider')
         .generateResponse(prompt, options);
 
       if (!result.success) {
@@ -44,7 +44,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => ({
       }
 
       const result = await strapi
-        .service('api::ai-assistant.ai-assistant')
+        .service('api::ai-assistant.ai-provider')
         .generateContent(contentType, context);
 
       if (!result.success) {
@@ -71,7 +71,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => ({
       }
 
       const result = await strapi
-        .service('api::ai-assistant.ai-assistant')
+        .service('api::ai-assistant.ai-provider')
         .analyzeText(text, analysisType);
 
       if (!result.success) {
@@ -91,12 +91,19 @@ export default ({ strapi }: { strapi: Core.Strapi }) => ({
    */
   async healthCheck(ctx) {
     try {
-      const apiKey = process.env.STRAPI_AI_API_KEY;
+      const providerInfo = await strapi
+        .service('api::ai-assistant.ai-provider')
+        .getProviderInfo();
 
       ctx.body = {
         status: 'ok',
-        configured: !!apiKey,
-        message: apiKey ? 'Strapi AI is configured and ready' : 'Strapi AI API key not configured',
+        provider: providerInfo.provider,
+        configured: providerInfo.configured,
+        available: providerInfo.available,
+        features: providerInfo.features,
+        message: providerInfo.configured
+          ? `${providerInfo.provider} is configured and ready`
+          : `${providerInfo.provider} is not configured. Required env vars: ${providerInfo.requiredEnvVars.join(', ')}`,
       };
     } catch (error: any) {
       ctx.throw(500, error.message);

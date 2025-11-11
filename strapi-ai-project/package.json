@@ -24,6 +24,7 @@
     "backup": "strapi export --file backup-$(date +%Y%m%d).tar.gz --no-encrypt"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.68.0",
     "@strapi/plugin-cloud": "5.30.1",
     "@strapi/plugin-users-permissions": "5.30.1",
     "@strapi/strapi": "5.30.1",
