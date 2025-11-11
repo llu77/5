@@ -14,7 +14,14 @@
     "strapi": "strapi",
     "upgrade": "npx @strapi/upgrade latest",
     "upgrade:dry": "npx @strapi/upgrade latest --dry",
-    "test:ai": "node test-ai-integration.js"
+    "test:ai": "node test-ai-integration.js",
+    "transfer": "strapi transfer",
+    "transfer:push": "strapi transfer --to remote",
+    "transfer:pull": "strapi transfer --from remote",
+    "transfer:cloud": "./scripts/transfer-to-cloud.sh",
+    "export": "strapi export",
+    "import": "strapi import",
+    "backup": "strapi export --file backup-$(date +%Y%m%d).tar.gz --no-encrypt"
   },
   "dependencies": {
     "@strapi/plugin-cloud": "5.30.1",
