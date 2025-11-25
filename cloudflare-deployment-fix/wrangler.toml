@@ -1,0 +1,88 @@
+# Cloudflare Pages & Workers Configuration
+# This file resolves the KV namespace error and implements best practices
+
+name = "lmm-finance"
+compatibility_date = "2024-11-25"
+pages_build_output_dir = "dist"
+
+# Build configuration
+[build]
+command = "npm run build"
+cwd = "."
+
+# Production environment variables (non-sensitive)
+[vars]
+ENVIRONMENT = "production"
+EMAIL_FROM = "info@symbolai.net"
+EMAIL_FROM_NAME = "LMM Finance"
+ADMIN_EMAIL = "admin@symbolai.net"
+
+# Cloudflare Access configuration
+CF_ACCESS_AUD = "ba5ee91d628f0c6a7bfe4f7896efec7944113399cdefb021f06f28bc7911336b"
+CF_ACCESS_CLIENT_ID = "0819d605ab60810ba7b56ca903c7405f.access"
+CF_ACCESS_TEAM = "symbolai"
+CF_ACCESS_CERTS_URL = "https://symbolai.cloudflareaccess.com/cdn-cgi/access/certs"
+
+# AI Gateway configuration
+AI_GATEWAY_ACCOUNT_ID = "85b01d19439ca53d3cfa740d2621a2bd"
+AI_GATEWAY_NAME = "symbol"
+CLOUDFLARE_GATEWAY_ID = "3c9bde8186fe4c868defcc441f28ca5e"
+CLOUDFLARE_GATEWAY_DOMAIN = "xnoojzri3g.cloudflare-gateway.com"
+
+# KV Namespace Bindings
+# IMPORTANT: Create these namespaces first using the commands in setup-kv-namespaces.sh
+[[kv_namespaces]]
+binding = "CACHE"
+id = "606e2671e250401bbc01f097797f1f66"  # Replace with your actual namespace ID
+preview_id = "606e2671e250401bbc01f097797f1f66"  # For preview deployments
+
+# If you need additional KV namespaces, add them here:
+# [[kv_namespaces]]
+# binding = "API_KEYS"
+# id = "YOUR_API_KEYS_NAMESPACE_ID"
+# preview_id = "YOUR_API_KEYS_PREVIEW_NAMESPACE_ID"
+
+# [[kv_namespaces]]
+# binding = "SESSIONS"
+# id = "YOUR_SESSIONS_NAMESPACE_ID"
+# preview_id = "YOUR_SESSIONS_PREVIEW_NAMESPACE_ID"
+
+# Secrets (set using wrangler secret put)
+# DO NOT put actual secret values here!
+# - ANTHROPIC_API_KEY_1 (sk-RbQ0xi7yOFho0jTsCgMK9CA6uDtHbe6OkWZvyihtwAXU2p3Q)
+# - ANTHROPIC_API_KEY_2 (bt-st-F1NAIK0bQ1KBkGc49h2JjtTYVB1AAxp59Ny1KHo150bSjAzn)
+# - Any other sensitive credentials
+
+# Durable Objects (if needed)
+# [[durable_objects.bindings]]
+# name = "STATE"
+# class_name = "StateManager"
+
+# R2 Buckets (if needed)
+# [[r2_buckets]]
+# binding = "UPLOADS"
+# bucket_name = "your-bucket-name"
+
+# D1 Databases (if needed)
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "production-db"
+# database_id = "your-database-id"
+
+# Workers AI (if needed)
+# [ai]
+# binding = "AI"
+
+# Node.js compatibility
+[node_compat]
+enabled = true
+
+# Development environment
+[env.dev]
+name = "lmm-finance-dev"
+vars = { ENVIRONMENT = "development" }
+
+# Staging environment
+[env.staging]
+name = "lmm-finance-staging"
+vars = { ENVIRONMENT = "staging" }

@@ -1,0 +1,10 @@
+# Cloudflare Pages Redirects Configuration
+# https://developers.cloudflare.com/pages/platform/redirects
+
+# API routes - ensure they go to Functions
+/api/*  200
+
+# SPA fallback - redirect all non-file requests to index.html
+# Status 200 means it's a rewrite (not a redirect)
+# This allows client-side routing to work
+/*    /index.html   200
